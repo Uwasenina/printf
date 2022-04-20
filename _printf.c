@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-		        fn = get_func(&format[++i]);
+			fn = get_print(&format[++i]);
 			if (fn)
 			{
 				r = fn(args);

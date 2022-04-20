@@ -15,7 +15,7 @@ typedef struct print_method
 {
 	char *t;
 	int (*fn)(va_list);
-} func_t;
+} print_t;
 
 int _abs(int n);
 int _putchar(char c);
@@ -38,7 +38,7 @@ int print_reverse(char *format, va_list);
 int  _print_rot13(char *s);
 int print_rot13(char *format, va_list);
 
-int (*get_func(const char *format))(va_list);
+int (*get_print(const char *format))(va_list);
 int _printf(const char *format, ...);
 
 #endif
