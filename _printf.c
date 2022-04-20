@@ -8,7 +8,7 @@
 int _printf(const char *format, ...)
 {
 	int i = 0, j = 0, r = 0;
-	int (*fn)(va_list);
+	int (*f)(va_list);
 	va_list args;
 
 	if (format)
@@ -18,13 +18,13 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			fn = get_print(&format[++i]);
-			if (fn)
+			f = get_func(&format[++i]);
+			if (f)
 			{
-				r = fn(args);
+				r = f(args);
 				i++;
 			}
-			else if (format[1] != ' ' && format[i])
+			else if (format[i] != ' ' && format[i])
 				r = _putchar(format[i - 1]);
 			else
 			{
