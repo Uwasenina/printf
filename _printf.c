@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 				i++;
 			}
 			else if (format[1] != ' ' && format[i])
-				r = _putchar(format[i - 1])
+				r = _putchar(format[i - 1]);
 			else
 			{
 				va_end(args);
