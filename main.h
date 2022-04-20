@@ -8,14 +8,14 @@
 /**
  * struct print_method - structure containing specifiers
  * and corresponding print functions
- * @specifier: the location and method to translatr data to char
+ * @t: the location and method to translatr data to char
  * @fn: print function for specific type
  */
 typedef struct print_method
 {
-	char *specifier;
+	char *t;
 	int (*fn)(va_list);
-} print_fn;
+} func_t;
 
 int _abs(int n);
 int _putchar(char c);
@@ -38,7 +38,7 @@ int print_reverse(char *format, va_list);
 int  _print_rot13(char *s);
 int print_rot13(char *format, va_list);
 
-int (*get_print_fn(char *format))(char *format, va_list);
-int _printf(char *format, ...);
+int (*get_func(const char *format))(va_list);
+int _printf(const char *format, ...);
 
 #endif
