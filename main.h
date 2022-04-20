@@ -14,7 +14,7 @@
 typedef struct print_method
 {
 	char *specifier;
-	int (*fn)(char *format, va_list);
+	int (*fn)(va_list);
 } print_fn;
 
 int _abs(int n);

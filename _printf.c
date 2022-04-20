@@ -5,46 +5,38 @@
  * @format:character string
  * Return: number of characters written
  */
-int _printf(char *format, ...)
+int _printf(const char *format, ...)
 {
-	int i = 0, (*printf_fn)(char *, va_list);
-	char specifier[3];
+	int i = 0, j = 0, r = 0;
+	int (*fn)(va_list);
 	va_list args;
 
-	if (format == NULL)
+	if (format)
 		return (-1);
-	specifier[2] = '\0';
 	va_start(args, format);
-	_putchar(-1);
-	while (format[0])
+	while (format[i])
 	{
-		if (format[0] == '%')
+		if (format[i] == '%')
 		{
-			print_fn = get_print_fn(format);
-			if (print_fn)
+		        fn = get_print_fn(&format[++i]);
+			if (fn)
 			{
-				specifier[0] = '%';
-				specifier[1] = format[1];
-				i += print_fn(specifier, args);
+				r = fn(args);
+				i++;
 			}
-			else if (format[1] != '\0')
-			{
-				i += _putchar('%');
-				i += _putchar(format[1]);
-			}
+			else if (format[1] != ' ' && format[i])
+				r = _putchar(format[i - 1])
 			else
 			{
-				i += _putchar('%);
-				break;
+				va_end(args);
+				return (-1);
 			}
-			format += 2;
 		}
-	else
-	{
-		i += _putchar(format[0]);
-		format++;
+		else
+			r = _putchar(format[i++]);
+		if (r > 0)
+			j += r;
 	}
-	}
-	_puchar(-2);
-	return (i);
+	va_end(args);
+	return (j);
 }
