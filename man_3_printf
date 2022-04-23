@@ -49,4 +49,4 @@ In this example, the value of [n] will be printed in place of %d in the string o
 .SH SEE ALSO
 .I printf (3)
 .SH AUTHOR
-Macro Chan and Ryuichi Miyazaki
+Done by Yvonne UWASE and Adama
